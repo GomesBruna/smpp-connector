@@ -7,15 +7,20 @@ import (
 	"github.com/linxGnu/gosmpp"
 	"github.com/linxGnu/gosmpp/data"
 	"github.com/linxGnu/gosmpp/pdu"
+	"os"
 )
 
 var retorno int
 
 func ConnectSmpp() *gosmpp.Session{
+	server := os.Getenv("HOST")
+	user := os.Getenv("USER")
+	pass := os.Getenv("PASS")
+
 	auth := gosmpp.Auth{
-		SMSC:       "127.0.0.1:2775",
-		SystemID:   "smppclient1",
-		Password:   "password",
+		SMSC:       server,
+		SystemID:   user,
+		Password:   pass,
 		SystemType: "",
 	}
 
